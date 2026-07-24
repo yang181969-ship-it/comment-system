@@ -1,0 +1,25 @@
+{
+  "name": "comment-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js",
+    "test:health": "node scripts/health-check.js",
+    "test:admin-comments": "node scripts/admin-comments.test.js",
+    "test:upload": "node scripts/upload.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.1",
+    "helmet": "^8.1.0",
+    "multer": "^2.2.0"
+  }
+}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="same-origin">
+  <title>留言管理后台 | Yang181969</title>
+  <link rel="icon" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+  <style>
+    html,
+    body {
+      height: auto;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--primary) 12%, transparent), transparent 34rem),
+        var(--bg-main);
+    }
+    .admin-standalone-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(24px, 4vw, 52px) 0 42px;
+    }
+    .admin-standalone-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--text-main);
+      font-weight: 850;
+      text-decoration: none;
+    }
+    .admin-standalone-brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      box-shadow: 0 8px 22px var(--shadow-soft);
+    }
+    .admin-standalone-footer {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+    @media (max-width: 720px) {
+      .admin-standalone-shell { width: min(100% - 20px, 1180px); padding-top: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-standalone-shell">
+    <a class="admin-standalone-brand" href="https://yang181969.com" rel="noopener">
+      <img src="assets/images/favicon.png" alt="Yang181969">
+      <span>Yang181969 Admin</span>
+    </a>
+
+<main id="main-content">
+  <section class="comment-admin-page no-card" aria-labelledby="comment-admin-title">
+
+    <section class="comment-admin-hero card">
+      <div class="comment-admin-hero__text">
+        <p class="comment-admin-eyebrow">COMMENT ADMIN</p>
+        <h1 id="comment-admin-title">留言管理后台</h1>
+        <p class="comment-admin-hero__sub">用于回复、隐藏、删除和维护自研留言系统。</p>
+      </div>
+      <button type="button" class="comment-admin-logout" id="comment-admin-logout" hidden>退出登录</button>
+    </section>
+
+    <section class="comment-admin-login card" id="comment-admin-login-card">
+      <h2>管理员验证</h2>
+      <p>请输入服务器 <code>.env</code> 中配置的 <code>ADMIN_TOKEN</code>。</p>
+      <form id="comment-admin-login-form" autocomplete="off">
+        <input
+          id="comment-admin-token"
+          type="password"
+          placeholder="管理员密钥"
+          autocomplete="off"
+          required
+        >
+        <button type="submit">进入后台</button>
+      </form>
+      <div id="comment-admin-login-message" class="comment-admin-message" hidden></div>
+    </section>
+
+    <section class="comment-admin-panel card" id="comment-admin-panel" hidden>
+      <header class="comment-admin-panel__head">
+        <div class="comment-admin-panel__head-text">
+          <h2>留言列表</h2>
+          <p>管理员回复会在前台以「站长」身份显示。</p>
+        </div>
+        <button type="button" id="comment-admin-refresh" class="comment-admin-refresh">刷新</button>
+      </header>
+
+      <div class="comment-admin-toolbar">
+        <label class="comment-admin-toolbar__field">
+          <span>状态筛选</span>
+          <select id="comment-admin-status-filter">
+            <option value="all">全部</option>
+            <option value="visible">可见</option>
+            <option value="hidden">已隐藏</option>
+            <option value="deleted">已删除</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="comment-admin-list" class="comment-admin-list" aria-live="polite"></div>
+
+      <div class="comment-admin-pagination" id="comment-admin-pagination" hidden>
+        <button type="button" id="comment-admin-prev">上一页</button>
+        <span id="comment-admin-page-info"></span>
+        <button type="button" id="comment-admin-next">下一页</button>
+      </div>
+    </section>
+
+  </section>
+</main>
+
+    <footer class="admin-standalone-footer">admin.yang181969.com</footer>
+  </div>
+
+  <script defer src="js/comment-admin.js"></script>
+</body>
+</html>
